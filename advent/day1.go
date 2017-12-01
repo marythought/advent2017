@@ -1,33 +1,11 @@
-package main
+package advent
 
 import (
-	"io/ioutil"
-	"fmt"
-	"errors"
 	"strings"
 	"strconv"
 )
 
-func main() {
-	numbers, err := getLines("input/day1.txt")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(calculateNextDigitSum(numbers))
-	fmt.Println(calculateHalfwaySum(numbers))
-
-}
-
-func getLines(filename string) ([]string, error) {
-	content, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return []string{}, errors.New("no file found")
-	}
-	numberString := strings.Split(string(content), "\n")
-	return numberString, nil
-}
-
-func calculateNextDigitSum(numbers []string)(sum int){
+func CalculateNextDigitSum(numbers []string)(sum int){
 	var lastNum int
 	numberString := strings.Split(numbers[0], "")
 	for i, num := range numberString {
@@ -52,12 +30,11 @@ func calculateNextDigitSum(numbers []string)(sum int){
 		}
 	}
 
-	return
+	return sum
 }
 
-func calculateHalfwaySum(numbers []string)(sum int){
+func CalculateHalfwaySum(numbers []string)(sum int){
 	numberString := strings.Split(numbers[0], "")
-	//if your list contains 10 items, only include a digit in your sum if the digit 10/2 = 5 steps forward matches it
 	stepForward := len(numberString)/2
 
 	for i, num := range numberString {
@@ -78,5 +55,5 @@ func calculateHalfwaySum(numbers []string)(sum int){
 		}
 	}
 
-	return
+	return sum
 }
