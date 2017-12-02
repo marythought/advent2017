@@ -15,6 +15,13 @@ func main() {
 	}
 	fmt.Println(advent.CalculateNextDigitSum(input))
 	fmt.Println(advent.CalculateHalfwaySum(input))
+
+	input, err = getInput("input/day2.txt")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(advent.CalculateCheckSum(input))
+	fmt.Println(advent.CalculateEvenDivideSum(input))
 }
 
 func getInput(filename string) ([]string, error) {
