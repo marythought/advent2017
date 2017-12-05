@@ -1,25 +1,11 @@
 package advent
 
-import (
-	"strconv"
-)
-
 func HandleJumpInput(input []string)(int){
-	instructions := []int{}
-	for _, v := range input {
-		int, _ := strconv.Atoi(v)
-		instructions = append(instructions, int)
-	}
-	return findJumps(instructions)
+	return findJumps(convertStringArrayToInt(input))
 }
 
 func HandleJumpInputPart2(input []string)(int){
-	instructions := []int{}
-	for _, v := range input {
-		int, _ := strconv.Atoi(v)
-		instructions = append(instructions, int)
-	}
-	return findJumpsPart2(instructions)
+	return findJumpsPart2(convertStringArrayToInt(input))
 }
 
 func findJumps(instructions []int)(jumps int){
@@ -38,7 +24,7 @@ func findJumps(instructions []int)(jumps int){
 			break
 		}
 		i = i + jump
-		jumpMap[index] = jumpMap[index] + 1
+		jumpMap[index]++
 		jumps++
 	}
 
@@ -62,15 +48,12 @@ func findJumpsPart2(instructions []int)(jumps int){
 		}
 		i = i + jump
 		if jumpMap[index] >= 3 {
-			jumpMap[index] = jumpMap[index] - 1
+			jumpMap[index]--
 		} else {
-			jumpMap[index] = jumpMap[index] + 1
+			jumpMap[index]++
 		}
 		jumps++
 	}
 
 	return jumps
 }
-
-
-

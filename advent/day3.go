@@ -73,14 +73,3 @@ func pivot(direction *string, pivotCount *int, stepCount *int)(){
 	*stepCount = 0
 	return
 }
-
-func mapkey(m LocationMap, value int) (key coordinate, ok bool) {
-	for k, v := range m {
-		if v == value {
-			key = k
-			ok = true
-			return
-		}
-	}
-	return
-}
