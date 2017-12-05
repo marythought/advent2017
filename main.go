@@ -36,6 +36,12 @@ func main() {
 	input, _ = getInput("input/day4.txt")
 	fmt.Println(advent.CountValidPassphrases(input))
 	fmt.Println(advent.CountValidPassphrasesNoAnagrams(input))
+
+	// Day 5
+	fmt.Println("DAY 5")
+	input, _ = getInput("input/day5.txt")
+	fmt.Println(advent.HandleJumpInput(input))
+	fmt.Println(advent.HandleJumpInputPart2(input))
 }
 
 func getInput(filename string) ([]string, error) {
