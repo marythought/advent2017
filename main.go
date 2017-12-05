@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	// Day 1
+	fmt.Println("DAY 1")
 	input, err := getInput("input/day1.txt")
 	if err != nil {
 		panic(err)
@@ -16,12 +18,24 @@ func main() {
 	fmt.Println(advent.CalculateNextDigitSum(input))
 	fmt.Println(advent.CalculateHalfwaySum(input))
 
+	// Day 2
+	fmt.Println("DAY 2")
 	input, err = getInput("input/day2.txt")
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(advent.CalculateCheckSum(input))
 	fmt.Println(advent.CalculateEvenDivideSum(input))
+
+	// Day 3
+	fmt.Println("DAY 3")
+	fmt.Println(advent.CalculateDistance(265149))
+
+	// Day 4
+	fmt.Println("DAY 4")
+	input, _ = getInput("input/day4.txt")
+	fmt.Println(advent.CountValidPassphrases(input))
+	fmt.Println(advent.CountValidPassphrasesNoAnagrams(input))
 }
 
 func getInput(filename string) ([]string, error) {
