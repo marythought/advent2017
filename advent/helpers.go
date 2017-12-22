@@ -1,12 +1,12 @@
 package advent
 
 import (
+	"sort"
 	"strconv"
 	"strings"
-	"sort"
 )
 
-func convertStringArrayToInt(input []string)(ret []int){
+func convertStringArrayToInt(input []string) (ret []int) {
 	for _, v := range input {
 		int, _ := strconv.Atoi(v)
 		ret = append(ret, int)
@@ -14,8 +14,16 @@ func convertStringArrayToInt(input []string)(ret []int){
 	return ret
 }
 
-func convertStringToIntSlice(string string) (row []int) {
-	nums := strings.Split(string, "\t")
+func convertStringListToSlice(input string) (cleanArray []string) {
+	a := strings.Split(input, ",")
+	for _, s := range a {
+		cleanArray = append(cleanArray, strings.TrimSpace(s))
+	}
+	return cleanArray
+}
+
+func convertStringToIntSlice(s string) (row []int) {
+	nums := strings.Split(s, "\t")
 	for _, n := range nums {
 		num, err := strconv.Atoi(n)
 		if err != nil {
@@ -34,7 +42,25 @@ func mapkey(m LocationMap, value int) (key coordinate, ok bool) {
 			return
 		}
 	}
-	return
+	return key, ok
+}
+
+func splitLines(input string) []string {
+	lines := strings.Split(string(input), "\n")
+	return RemoveTrailingEmptyStringsInStringArray(lines)
+}
+
+// from https://siongui.github.io/2017/01/19/go-remove-leading-and-trailing-empty-strings-in-string-slice/
+func RemoveTrailingEmptyStringsInStringArray(sa []string) []string {
+	lastNonEmptyStringIndex := len(sa) - 1
+	for i := lastNonEmptyStringIndex; i >= 0; i-- {
+		if sa[i] == "" {
+			lastNonEmptyStringIndex--
+		} else {
+			break
+		}
+	}
+	return sa[0 : lastNonEmptyStringIndex+1]
 }
 
 //Sort String methods via https://stackoverflow.com/a/22698017
@@ -59,9 +85,9 @@ func SortString(s string) string {
 }
 
 //via https://stackoverflow.com/a/45976758
-func minMax(row []int) (int, int) {
-	var max = row[0]
-	var min = row[0]
+func minMax(row []int) (min int, max int) {
+	max = row[0]
+	min = row[0]
 	for _, value := range row {
 		if max < value {
 			max = value
@@ -71,4 +97,16 @@ func minMax(row []int) (int, int) {
 		}
 	}
 	return min, max
+}
+
+func maxIndex(array []int) (max int, index int) {
+	max = array[0]
+	index = 0
+	for i, value := range array {
+		if max < value {
+			max = value
+			index = i
+		}
+	}
+	return max, index
 }

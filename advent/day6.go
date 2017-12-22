@@ -36,15 +36,3 @@ func makeStringKey(array []int) (ret string) {
 	}
 	return
 }
-
-func maxIndex(array []int) (max int, index int) {
-	max = array[0]
-	index = 0
-	for i, value := range array {
-		if max < value {
-			max = value
-			index = i
-		}
-	}
-	return max, index
-}

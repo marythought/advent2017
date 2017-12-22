@@ -3,9 +3,10 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/marythought/advent2017/advent"
 	"io/ioutil"
 	"strings"
+
+	"github.com/marythought/advent2017/advent"
 )
 
 func main() {
@@ -42,6 +43,25 @@ func main() {
 	input, _ = getInput("input/day5.txt")
 	fmt.Println(advent.HandleJumpInput(input))
 	fmt.Println(advent.HandleJumpInputPart2(input))
+
+	// Day 6
+	fmt.Println("DAY 6 (solved in its own go file)")
+
+	// Day 7
+	fmt.Println("DAY 7")
+	day7, _ := ioutil.ReadFile("input/day7.txt")
+	fmt.Println(advent.FindBase(string(day7)))
+	// TODO: still not returning sensical answers :p
+	// advent.FindUnbalanced(string(day7))
+
+	fmt.Println("DAY 8")
+	input, _ = getInput("input/day8.txt")
+	fmt.Println(advent.FindLargestValue(input))
+	fmt.Println(advent.FindHighestValEver(input))
+
+	fmt.Println("DAY 9")
+	input, _ = getInput("input/day9.txt")
+	fmt.Println(advent.GarbageCollect(input[0]))
 }
 
 func getInput(filename string) ([]string, error) {
@@ -50,5 +70,18 @@ func getInput(filename string) ([]string, error) {
 		return []string{}, errors.New("file not found")
 	}
 	lines := strings.Split(string(content), "\n")
-	return lines, nil
+	return RemoveTrailingEmptyStringsInStringArray(lines), nil
+}
+
+// from https://siongui.github.io/2017/01/19/go-remove-leading-and-trailing-empty-strings-in-string-slice/
+func RemoveTrailingEmptyStringsInStringArray(sa []string) []string {
+	lastNonEmptyStringIndex := len(sa) - 1
+	for i := lastNonEmptyStringIndex; i >= 0; i-- {
+		if sa[i] == "" {
+			lastNonEmptyStringIndex--
+		} else {
+			break
+		}
+	}
+	return sa[0 : lastNonEmptyStringIndex+1]
 }
