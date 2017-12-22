@@ -25,7 +25,6 @@ func allocate(array []int) (count int) {
 			index = (index + 1) % length
 			array[index] += 1
 		}
-		// add 1 to count
 		count += 1
 	}
 }

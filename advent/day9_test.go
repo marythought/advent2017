@@ -57,7 +57,7 @@ func TestDay9Part1(t *testing.T) {
 	if expected != actual {
 		assert.Equal(t, expected, actual, "it should ignore the val after a '!'")
 	}
-	if gcount != 5 {
-		assert.Equal(t, 5, gcount, "")
+	if gcount != 17 {
+		assert.Equal(t, 17, gcount, "")
 	}
 }

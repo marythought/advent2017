@@ -26,7 +26,11 @@ func GarbageCollect(s string) (points, garbageCount int) {
 					garbageCount++
 				}
 			case "<":
-				inGarbage = true
+				if inGarbage {
+					garbageCount++
+				} else {
+					inGarbage = true
+				}
 			case ">":
 				inGarbage = false
 			case "!":
