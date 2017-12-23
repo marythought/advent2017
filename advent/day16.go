@@ -6,8 +6,37 @@ import (
 	"strings"
 )
 
+func RunDancingPrograms(dance string, chars string, times int) (end string) {
+	end = DancingPrograms(dance, chars)
+	for i := 0; i < (times - 1); i++ {
+		end = DancingPrograms(dance, end)
+	}
+	return end
+}
+
+func findLoop(dance string, chars string, times int) (end string, loops int) {
+	fmt.Println(chars)
+	seen := []string{chars}
+	loops = 0
+
+	end = DancingPrograms(dance, chars)
+	loops++
+	seen = append(seen, end)
+	for i := 0; i < (times - 1); i++ {
+		fmt.Println(end)
+		end = DancingPrograms(dance, end)
+		loops++
+		if find(seen, end) {
+			fmt.Println(end)
+			return end, loops
+		}
+		seen = append(seen, end)
+	}
+	return end, loops
+}
+
 func DancingPrograms(dance, chars string) (program string) {
-	// sub in the program for testing
+	// sub in the program for testing *and surprise for part 2*
 	program = chars
 	if chars == "" {
 		program = "abcdefghijklmnop"
@@ -87,11 +116,11 @@ func findIndex(slice []string, val string) int {
 	return -1
 }
 
-// test data
-//   For example, with only five programs standing in a line (abcde), they could do the following dance:
-//
-// s1, a spin of size 1: eabcd.
-// x3/4, swapping the last two programs: eabdc.
-// pe/b, swapping programs e and b: baedc.
-
-// After finishing their dance, the programs end up in order baedc.
+func find(slice []string, val string) bool {
+	for _, v := range slice {
+		if v == val {
+			return true
+		}
+	}
+	return false
+}

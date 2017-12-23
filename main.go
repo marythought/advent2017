@@ -66,6 +66,8 @@ func main() {
 	fmt.Println("DAY 16")
 	day16, _ := ioutil.ReadFile("input/day16.txt")
 	fmt.Println(advent.DancingPrograms(string(day16), ""))
+	// loop is 63; 1000000000 % 63 = 55
+	fmt.Println(advent.RunDancingPrograms(string(day16), "", 55))
 }
 
 func getInput(filename string) ([]string, error) {
