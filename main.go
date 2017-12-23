@@ -62,6 +62,10 @@ func main() {
 	fmt.Println("DAY 9")
 	input, _ = getInput("input/day9.txt")
 	fmt.Println(advent.GarbageCollect(input[0]))
+
+	fmt.Println("DAY 16")
+	day16, _ := ioutil.ReadFile("input/day16.txt")
+	fmt.Println(advent.DancingPrograms(string(day16), ""))
 }
 
 func getInput(filename string) ([]string, error) {

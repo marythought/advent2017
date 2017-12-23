@@ -1,7 +1,5 @@
 package advent
 
-import "fmt"
-
 //
 // To achieve this, begin with a list of numbers from 0 to 255, a current position which begins at 0 (the first element in the list), a skip size (which starts at 0), and a sequence of lengths (your puzzle input). Then, for each length:
 //
@@ -20,8 +18,8 @@ func KnotHash(size int, input []int) int {
 	list := populateList(size)
 	position := 0
 	skipSize := 0
-	for index, length := range input {
-		fmt.Println("loop number ", index, "input is ", length, "index is", position, "list is", list)
+	for _, length := range input {
+		// fmt.Println("loop number ", index, "input is ", length, "index is", position, "list is", list)
 		startIndex := position
 		endIndex := (startIndex + length) % size
 		if length < 2 {
