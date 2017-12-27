@@ -15,7 +15,6 @@ func RunDancingPrograms(dance string, chars string, times int) (end string) {
 }
 
 func findLoop(dance string, chars string, times int) (end string, loops int) {
-	fmt.Println(chars)
 	seen := []string{chars}
 	loops = 0
 
@@ -23,11 +22,9 @@ func findLoop(dance string, chars string, times int) (end string, loops int) {
 	loops++
 	seen = append(seen, end)
 	for i := 0; i < (times - 1); i++ {
-		fmt.Println(end)
 		end = DancingPrograms(dance, end)
 		loops++
 		if find(seen, end) {
-			fmt.Println(end)
 			return end, loops
 		}
 		seen = append(seen, end)
