@@ -1,8 +1,6 @@
 package advent
 
-//
-// To achieve this, begin with a list of numbers from 0 to 255, a current position which begins at 0 (the first element in the list), a skip size (which starts at 0), and a sequence of lengths (your puzzle input). Then, for each length:
-//
+// Begin with a list of numbers from 0 to 255, a current position which begins at 0 (the first element in the list), a skip size (which starts at 0), and a sequence of lengths (your puzzle input). Then, for each length:
 // Reverse the order of that length of elements in the list, starting with the element at the current position.
 // Move the current position forward by that length plus the skip size.
 // Increase the skip size by one.
@@ -19,30 +17,28 @@ func KnotHash(size int, input []int) int {
 	position := 0
 	skipSize := 0
 	for _, length := range input {
-		// fmt.Println("loop number ", index, "input is ", length, "index is", position, "list is", list)
-		startIndex := position
-		endIndex := (startIndex + length) % size
-		if length < 2 {
-		} else if endIndex > startIndex {
-			loop := list[startIndex:endIndex]
-			reverseSlice(loop)
-			counter := 0
-			for i, _ := range list[startIndex:endIndex] {
-				list[i] = loop[counter]
-				counter++
-			}
-		} else {
-			loop := append(list[startIndex:], list[0:endIndex]...)
-			reverseSlice(loop)
-
-			counter := 0
-			for i := startIndex; i < size; i++ {
-				list[i] = loop[counter]
-				counter++
-			}
-			for i := 0; i < endIndex; i++ {
-				list[i] = loop[counter]
-				counter++
+		endIndex := (position + length) % size
+		if length > 1 {
+			if endIndex > position {
+				loop := list[position:endIndex]
+				reverseSlice(loop)
+				counter := 0
+				for i := position; i < endIndex; i++ {
+					list[i] = loop[counter]
+					counter++
+				}
+			} else {
+				loop := append(list[position:], list[0:endIndex]...)
+				reverseSlice(loop)
+				counter := 0
+				for i := position; i < size; i++ {
+					list[i] = loop[counter]
+					counter++
+				}
+				for i := 0; i < endIndex; i++ {
+					list[i] = loop[counter]
+					counter++
+				}
 			}
 		}
 		position = (position + length + skipSize) % size
