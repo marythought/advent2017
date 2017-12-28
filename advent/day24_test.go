@@ -1,21 +1,13 @@
 package advent
 
-import (
-	"testing"
-
-	"github.com/stretchr/testify/assert"
-)
-
-func TestDay24Part1(t *testing.T) {
-	actual := Turing("test", "A", 6)
-	expected := 3
-	if expected != actual {
-		assert.Equal(t, expected, actual, "")
-	}
-
-	actual = Turing("", "A", 12261543)
-	expected = 5744
-	if expected != actual {
-		assert.Equal(t, expected, actual, "this is the real result")
-	}
-}
+// func TestDay24Part1(t *testing.T) {
+// 	testInput := [][]int{}
+// 	testInput = append(testInput, []int{0, 2}, []int{2, 2}, []int{2, 3})
+// 	testInput = append(testInput, []int{3, 4}, []int{3, 5}, []int{0, 1})
+// 	testInput = append(testInput, []int{10, 1}, []int{9, 10})
+// 	actual := BuildingBridges(testInput)
+// 	expected := 31
+// 	if expected != actual {
+// 		assert.Equal(t, expected, actual, "")
+// 	}
+// }

@@ -110,3 +110,28 @@ func maxIndex(array []int) (max int, index int) {
 	}
 	return max, index
 }
+
+func findIndex(slice []string, val string) int {
+	for i, v := range slice {
+		if v == val {
+			return i
+			break
+		}
+	}
+	return -1
+}
+
+func find(slice []string, val string) bool {
+	for _, v := range slice {
+		if v == val {
+			return true
+		}
+	}
+	return false
+}
+
+func swap(slice []string, i1 int, i2 int) {
+	temp := slice[i1]
+	slice[i1] = slice[i2]
+	slice[i2] = temp
+}

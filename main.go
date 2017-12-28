@@ -68,6 +68,10 @@ func main() {
 	fmt.Println(advent.DancingPrograms(string(day16), ""))
 	// loop is 63; 1000000000 % 63 = 55
 	fmt.Println(advent.RunDancingPrograms(string(day16), "", 55))
+
+	fmt.Println("DAY 22")
+	input, _ = getInput("input/day22.txt")
+	fmt.Println(advent.VirusGrid(input))
 }
 
 func getInput(filename string) ([]string, error) {
