@@ -1,6 +1,7 @@
 package advent
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -11,7 +12,6 @@ type Node struct {
 	name         string
 	weight       int
 	childrenList []string
-	children     []Node
 }
 
 type nodeMap map[string]Node
@@ -54,20 +54,33 @@ func FindBase(input string) (base string) {
 	return base
 }
 
-func FindUnbalanced(input string) int {
-	// baseName := FindBase(input)
-	// base, ok := nm[baseName]
-	// if !ok {
-	// 	panic("can't find base")
-	// }
-	// fmt.Println("base is", base.name)
-	// for _, n := range base.childrenList {
-	// node := nm[n]
-	// childw := weighChildren(node)
-	// fmt.Println("BASE CHILD")
-	// fmt.Println(node.name, node.weight, childw, (node.weight + childw))
-	// }
-	return 0
+func FindUnbalanced(input, baseInput string) {
+	var baseName string
+	baseName = FindBase(input)
+	if baseInput != "" {
+		baseName = baseInput
+	}
+	base, ok := nm[baseName]
+	if !ok {
+		panic("can't find base")
+	}
+	fmt.Println("base is", base.name)
+	for _, n := range base.childrenList {
+		node := nm[n]
+		weight := weighSelfAndChildren(node)
+		fmt.Println("BASE CHILD", node.name)
+		fmt.Println(weight)
+		fmt.Println("node weight", node.weight)
+	}
+
+	// 	BASE CHILD hqxdyv
+	// 62860
+
+	// BASE CHILD apktiv
+	// 15102
+
+	// 	BASE CHILD obxrn, weighs 756
+	// 1116 (everything else 1109)
 }
 
 func findOrMakeNode7(name string) (n Node) {
@@ -89,21 +102,21 @@ func addChildren(n *Node, childrenList []string) {
 	if len(childrenList) > 0 {
 		children := convertStringListToSlice(childrenList[1])
 		for _, child := range children {
-			kidNode, ok := nm[child]
+			_, ok := nm[child]
 			if !ok {
-				kidNode = makeAndAddNode(child)
+				makeAndAddNode(child)
 			}
-			n.children = append(n.children, kidNode)
 		}
 		nm[n.name] = *n
 	}
 }
 
 func countChildren(n Node) (count int) {
-	if len(n.children) > 1 {
-		for _, child := range n.children {
-			if len(child.children) > 1 {
-				count += countChildren(child)
+	if len(n.childrenList) > 0 {
+		for _, child := range n.childrenList {
+			c := nm[child]
+			if len(c.childrenList) > 0 {
+				count += countChildren(c)
 			} else {
 				count += 1
 			}
@@ -112,17 +125,17 @@ func countChildren(n Node) (count int) {
 	return count
 }
 
-func weighChildren(n Node) (weight int) {
+func weighSelfAndChildren(n Node) (weight int) {
 	if len(n.childrenList) > 0 {
 		for _, child := range n.childrenList {
 			c := nm[child]
 			if len(c.childrenList) > 0 {
-				weight += weighChildren(c)
+				weight += weighSelfAndChildren(c)
 			} else {
 				weight += c.weight
 			}
-			// fmt.Println("my name is", c.name, "I weigh", c.weight, "my parent is", n.name)
 		}
 	}
+	weight += n.weight
 	return weight
 }

@@ -31,6 +31,7 @@ func main() {
 	// Day 3
 	fmt.Println("DAY 3")
 	fmt.Println(advent.CalculateDistance(265149))
+	fmt.Println(advent.CalculateHighestSum(265149))
 
 	// Day 4
 	fmt.Println("DAY 4")
@@ -52,7 +53,7 @@ func main() {
 	day7, _ := ioutil.ReadFile("input/day7.txt")
 	fmt.Println(advent.FindBase(string(day7)))
 	// TODO: still not returning sensical answers :p
-	// advent.FindUnbalanced(string(day7))
+	advent.FindUnbalanced(string(day7))
 
 	fmt.Println("DAY 8")
 	input, _ = getInput("input/day8.txt")

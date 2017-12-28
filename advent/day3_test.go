@@ -2,12 +2,13 @@ package advent
 
 import (
 	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
 func TestDay3Part1(t *testing.T) {
 	locationMap := MakeLocationMap(25)
-	c1 := coordinate{0,0}
+	c1 := coordinate{0, 0}
 	if locationMap[c1] != 1 {
 		assert.Equal(t, c1, locationMap[c1], "grid at 1 should be 0,0")
 	}
@@ -31,5 +32,18 @@ func TestDay3Part1(t *testing.T) {
 	if locationMap[c25] != 25 {
 		assert.Equal(t, c25, locationMap[c25], "grid at 25 should be 2, -2")
 	}
+}
 
+// 147  142  133  122   59
+// 304    5    4    2   57
+// 330   10    1    1   54
+// 351   11   23   25   26
+// 362  747  806--->   ...
+// 265149 is max
+func TestDay3Part2(t *testing.T) {
+	actual := MakeLocationMapWithSums(25)
+	expected := 26
+	if expected != actual {
+		assert.Equal(t, expected, actual, "highest result should be 26")
+	}
 }
