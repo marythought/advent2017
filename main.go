@@ -45,15 +45,10 @@ func main() {
 	fmt.Println(advent.HandleJumpInput(input))
 	fmt.Println(advent.HandleJumpInputPart2(input))
 
-	// Day 6
-	fmt.Println("DAY 6 (solved in its own go file)")
-
 	// Day 7
 	fmt.Println("DAY 7")
 	day7, _ := ioutil.ReadFile("input/day7.txt")
 	fmt.Println(advent.FindBase(string(day7)))
-	// TODO: still not returning sensical answers :p
-	advent.FindUnbalanced(string(day7))
 
 	fmt.Println("DAY 8")
 	input, _ = getInput("input/day8.txt")
@@ -64,11 +59,19 @@ func main() {
 	input, _ = getInput("input/day9.txt")
 	fmt.Println(advent.GarbageCollect(input[0]))
 
+	fmt.Println("DAY 12")
+	day12, _ := ioutil.ReadFile("input/day12.txt")
+	fmt.Println(len(advent.FindPipes(string(day12), 0)))
+	fmt.Println(advent.FindPipeGroups(string(day12), 2000))
+
 	fmt.Println("DAY 16")
 	day16, _ := ioutil.ReadFile("input/day16.txt")
 	fmt.Println(advent.DancingPrograms(string(day16), ""))
 	// loop is 63; 1000000000 % 63 = 55
 	fmt.Println(advent.RunDancingPrograms(string(day16), "", 55))
+
+	fmt.Println("DAY 17")
+	fmt.Println(advent.Spinlock(345))
 
 	fmt.Println("DAY 22")
 	input, _ = getInput("input/day22.txt")

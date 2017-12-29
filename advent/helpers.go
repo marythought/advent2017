@@ -121,6 +121,16 @@ func findIndex(slice []string, val string) int {
 	return -1
 }
 
+func findIntIndex(slice []int, val int) int {
+	for i, v := range slice {
+		if v == val {
+			return i
+			break
+		}
+	}
+	return -1
+}
+
 func find(slice []string, val string) bool {
 	for _, v := range slice {
 		if v == val {
