@@ -1,10 +1,9 @@
 package advent
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
-
 
 func TestDay2Part1(t *testing.T) {
 	actual := CalculateCheckSum([]string{"5	1	9	5", "7	5	3", "2	4	6	8"})

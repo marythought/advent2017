@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func CountValidPassphrases(codes []string)(valids int){
+func CountValidPassphrases(codes []string) (valids int) {
 	for _, code := range codes {
 		if validPassphrase(code) {
 			valids++
@@ -13,7 +13,7 @@ func CountValidPassphrases(codes []string)(valids int){
 	return valids
 }
 
-func CountValidPassphrasesNoAnagrams(codes []string)(valids int){
+func CountValidPassphrasesNoAnagrams(codes []string) (valids int) {
 	for _, code := range codes {
 		if validNoAnagrams(code) {
 			valids++
@@ -21,7 +21,6 @@ func CountValidPassphrasesNoAnagrams(codes []string)(valids int){
 	}
 	return valids
 }
-
 
 func validPassphrase(code string) bool {
 	unique := map[string]bool{}

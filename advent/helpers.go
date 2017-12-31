@@ -5,6 +5,9 @@ import (
 	"strconv"
 	"strings"
 )
+type coordinate struct {
+	x, y int
+}
 
 func convertStringArrayToInt(input []string) (ret []int) {
 	for _, v := range input {

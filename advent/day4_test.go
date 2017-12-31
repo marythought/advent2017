@@ -1,8 +1,8 @@
 package advent
 
 import (
-	"testing"
 	"github.com/magiconair/properties/assert"
+	"testing"
 )
 
 func TestDay4Part1(t *testing.T) {

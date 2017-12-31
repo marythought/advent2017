@@ -5,9 +5,6 @@ import (
 )
 
 type LocationMap map[coordinate]int
-type coordinate struct {
-	x, y int
-}
 
 func CalculateDistance(val int) (steps int) {
 	lm := MakeLocationMap(val)

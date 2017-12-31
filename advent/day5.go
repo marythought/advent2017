@@ -1,14 +1,14 @@
 package advent
 
-func HandleJumpInput(input []string)(int){
+func HandleJumpInput(input []string) int {
 	return findJumps(convertStringArrayToInt(input))
 }
 
-func HandleJumpInputPart2(input []string)(int){
+func HandleJumpInputPart2(input []string) int {
 	return findJumpsPart2(convertStringArrayToInt(input))
 }
 
-func findJumps(instructions []int)(jumps int){
+func findJumps(instructions []int) (jumps int) {
 	jumpMap := make(map[int]int)
 	for i, val := range instructions {
 		_, ok := jumpMap[i]
@@ -31,7 +31,7 @@ func findJumps(instructions []int)(jumps int){
 	return jumps
 }
 
-func findJumpsPart2(instructions []int)(jumps int){
+func findJumpsPart2(instructions []int) (jumps int) {
 	jumpMap := make(map[int]int)
 	for i, val := range instructions {
 		_, ok := jumpMap[i]

@@ -77,6 +77,10 @@ func main() {
 	input, _ = getInput("input/day18.txt")
 	fmt.Println(advent.Duet(input))
 
+	fmt.Println("DAY 19")
+	input, _ = getInput("input/day19.txt")
+	fmt.Println(advent.FollowPath(input))
+
 	fmt.Println("DAY 22")
 	input, _ = getInput("input/day22.txt")
 	fmt.Println(advent.VirusGrid(input))

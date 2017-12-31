@@ -1,10 +1,9 @@
 package advent
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
-	)
-
+	"testing"
+)
 
 func TestPart1(t *testing.T) {
 	actual := CalculateNextDigitSum([]string{"1122"})
